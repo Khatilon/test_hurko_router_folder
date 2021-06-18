@@ -107,7 +107,7 @@ class App extends Component {
       return (
           <>
             {/* router章節在ep.21 */}
-            <HashRouter>
+            <Router>
               {/* 
                 由於create-app本身會處理掉BrowserRouter的問題(我們透過後端也可以), 記得部署前要改回BrowserRouter
                 但改成用link來切換route後就解決本身問題了, 因為link本身具有history作用, 詳細參考文章...
@@ -139,7 +139,7 @@ class App extends Component {
                     </Switch>
                     <Route path='/about' component={About} />
                     {/* 因為需要props user state及getUser的function, ...props會把history那些傳下去 */}
-                    <Route path="/user/:login" render={(props) => (
+                    <Route path="/user" render={(props) => (
                       <User
                         {...props}
                         getUser={this.getUser}
@@ -151,7 +151,7 @@ class App extends Component {
                     )}/>
                 </div>
               </div>
-            </HashRouter>
+            </Router>
           </>
       )
   }

@@ -6,6 +6,7 @@ module.exports = {
 	// @babel/polyfill is for async issue
 	entry: ['@babel/polyfill', './src/index.js'],
 	output: {
+		publicPath: '/',
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js'
 	},
