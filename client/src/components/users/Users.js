@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import UserItem from './UserItem';
 import Spinner from '../layout/Spinner';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const Users = (props) => {
     const { users, loading } = props;
@@ -21,8 +21,8 @@ const Users = (props) => {
 }
 
 Users.prototype = {
-    user: propTypes.array.isRequired,
-    loading: propTypes.bool.isRequired
+    user: PropTypes.array.isRequired,
+    loading: PropTypes.bool.isRequired
 };
 
 const userStyle = {

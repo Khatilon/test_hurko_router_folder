@@ -1,5 +1,6 @@
 import React from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const UserItem = (props) => {
 
@@ -10,7 +11,7 @@ const UserItem = (props) => {
             <img src={avatar_url} alt="" className="round-img" style={{ width: 60 }}/>
             <h3>{login}</h3>
             <div>
-                <a href={html_url} className="btn btn-dark btn-sm my-1">More</a>
+                <Link to={`/user/${login}`} className="btn btn-dark btn-sm my-1">More</Link>
             </div>
         </div>
     )
@@ -18,7 +19,7 @@ const UserItem = (props) => {
 
 UserItem.propTypes = {
     // ptor (react Es7 snippet)
-    user: propTypes.object.isRequired,
+    user: PropTypes.object.isRequired,
 }
 
 export default UserItem;
