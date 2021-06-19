@@ -16,7 +16,8 @@ class App extends Component {
     user: {},
     repos: [],
     loading: false,
-    alert: null
+    alert: null,
+    checkAPI: null
   }
   // https://docs.github.com/en/rest/overview/endpoints-available-for-github-apps
 
@@ -34,6 +35,10 @@ class App extends Component {
         users: res.data.items
       });
     }
+    const res2 = await axios.get(`/testroute/${text}`);
+
+    console.log('res2', res2);
+    this.setState({checkAPI: res2.data});
   }
 
   // Get single Github user
@@ -99,15 +104,16 @@ class App extends Component {
     const res2 = await axios.get('/hello');
 
     console.log('res2', res2);
+    this.setState({checkAPI: res2.data});
   }
   
   render() {
-      const { users, loading, alert, user, repos } = this.state;
+      const { users, loading, alert, user, repos, checkAPI } = this.state;
 
       return (
           <>
             {/* router章節在ep.21 */}
-            <Router>
+            <HashRouter>
               {/* 
                 由於create-app本身會處理掉BrowserRouter的問題(我們透過後端也可以), 記得部署前要改回BrowserRouter
                 但改成用link來切換route後就解決本身問題了, 因為link本身具有history作用, 詳細參考文章...
@@ -120,6 +126,7 @@ class App extends Component {
               <div className="app">
                 <Navbar />
                 <div className="container">
+                    {checkAPI && checkAPI.name}
                     <Alert alert={alert}/>
                     <Switch>
                       <Route exact path='/' render={(props) => (
@@ -151,7 +158,7 @@ class App extends Component {
                     )}/>
                 </div>
               </div>
-            </Router>
+            </HashRouter>
           </>
       )
   }

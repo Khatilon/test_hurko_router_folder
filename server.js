@@ -13,9 +13,9 @@ app.get('/hello', (req, res) => {
   });
 });
 
-app.get('/testroute', (req, res) => {
+app.get('/testroute/:text', (req, res) => {
   res.send({
-    name: "testroute",
+    name: req.params.text,
     id: 478
   });
 });
